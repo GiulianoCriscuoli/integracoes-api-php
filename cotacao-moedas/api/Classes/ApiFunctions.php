@@ -7,9 +7,9 @@ class ApiFunctions {
         return API_URL .'/'.$endpoint;
     }
 
-    public function searchCotation() {
+    public function searchCotation($cotation1, $cotation2) {
         
-        $url = $this->api_endpoint('last/USD-BRL');
+        $url = $this->api_endpoint('last/'.$cotation1.'-'.$cotation2);
 
         $client = curl_init($url);
 
@@ -23,7 +23,7 @@ class ApiFunctions {
 
         curl_close($client);
 
-        if($response == null) {
+        if($response === null) {
 
             die('A API NÃO RETORNOU NENHUM RESULTADO');
         }
